@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* Our variables */
+:root {
+  --bg-clr: rgb(231, 255, 218);
+  --text-clr: #000;
+  --primary-clr: #28ce33;
+  --secondary-clr: #b4f5bd;
+  --white: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Roboto", sans-serif;
+  user-select: none;/*User can't select/ copy/ highlight*/
+}
+
+body {
+  background: var(--bg-clr);
+  color: var(--text-clr);
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.select_wrap .default_option li .option {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--white);
+  width: 300px;
+  height: 45px;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: 0.5s ease;
+}
+
+.select_wrap .default_option li .option .count {
+  font-weight: bold;
+  font-size: 15px;
+  display: none;
+}
+
+.select_wrap .default_option li .option .icon {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: var(--primary-clr);
+  font-size: 14px;
+  width: 25px;
+  height: 25px;
+  background: var(--secondary-clr);
+  border-radius: 50%;
+  line-height: 30px;
+  text-align: center;
+  transition: 0.5s ease;
+}
+
+.select_wrap .select_ul {
+  background: var(--white);
+  border-radius: 3px;
+  width: 300px;
+  display: none;
+}
+
+.select_wrap .select_ul li .option {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  padding-left: 50px;
+  width: 100%;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.select_wrap .select_ul li:last-child .option {
+  margin-bottom: 0;
+}
+
+.select_wrap .select_ul li .option:hover {
+  background: var(--secondary-clr);
+}
+
+.select_wrap .select_ul li:first-child .option {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.select_wrap .select_ul li:last-child .option {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.select_wrap .select_ul li .option .input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.select_wrap .select_ul li .option .checkmark {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--primary-clr);
+  border-radius: 3px;
+  transition: 0.5s ease;
+}
+
+.select_wrap .select_ul li .option .checkmark:before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 21px;
+  height: 21px;
+  background: var(--primary-clr);
+  border-radius: 3px;
+  display: none;
+}
+
+.select_wrap .select_ul li .option .checkmark:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  width: 7px;
+  height: 2px;
+  border: 2px solid;
+  border-color: transparent transparent var(--white) var(--white);
+  transform: rotate(-45deg);
+  display: none;
+}
+
+/* It's like a condition, if active class is there, then display block */
+.select_wrap .default_option.active + .select_ul {
+  display: block;
+}
+
+.select_wrap .default_option.active .option,
+.select_wrap .default_option .option:hover{
+ background: var(--primary-clr);
+  color: var(--white);
+}
+
+.select_wrap .default_option.active .option .icon{
+  transform: rotate(180deg);
+}
+
+/* ~ is a css selector: means select evert element with .checkmark class */
+.select_wrap .select_ul li .option .input:checked ~ .checkmark:before,
+.select_wrap .select_ul li .option .input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.select_wrap .select_ul li .option.active .text{
+  color: var(--primary-clr);
+}
